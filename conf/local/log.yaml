@@ -1,0 +1,11 @@
+log:
+  local:
+    enable: true
+    config:
+      - path: "./logs"
+        file: "info.log"
+        max-size: 10240 #megabytes
+        max-backups: 10
+        max-age: 7
+        level-min: -1
+        level-max: -1

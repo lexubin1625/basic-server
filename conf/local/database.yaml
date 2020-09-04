@@ -1,0 +1,8 @@
+mysql:
+  node:
+    default:
+      dsn: "root:1@(localhost:3307)/task"
+      slave_dsn: "root:1@(localhost:3307)/task"
+      charset: "utf8"
+      timeout: "200ms"
+      read_timeout: "100ms"

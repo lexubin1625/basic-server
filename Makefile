@@ -3,4 +3,5 @@
 all: build
 
 build:
-	@go build -o bin -v .
+	@go build -o bin -v ./server/main.go
+

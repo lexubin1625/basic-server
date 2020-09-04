@@ -1,2 +1,7 @@
 server:
   http_port: 8000
+log_enable: true
+data_enable: true
+other:
+  log: "./conf/local/log.yaml"
+  database: "./conf/local/database.yaml"

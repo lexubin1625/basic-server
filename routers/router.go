@@ -5,11 +5,12 @@ import (
 	"net/http"
 )
 
-func InitRouter(r *gin.Engine) *gin.Engine{
+func InitRouter(r *gin.Engine){
 	apiv1 := r.Group("/api/v1")
 	apiv1.GET("/", func(c *gin.Context) {
 		c.String(http.StatusOK, "Hello World")
 	})
-
-	return r
+	//var conf config.Config
+	//config.Viper.AllKeys()
+	//fmt.Println(config.Viper.AllKeys())
 }
