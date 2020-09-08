@@ -1,16 +1,14 @@
 package routers
 
 import (
+	"basic-server/api"
+	"basic-server/middleware"
 	"github.com/gin-gonic/gin"
-	"net/http"
 )
 
 func InitRouter(r *gin.Engine){
 	apiv1 := r.Group("/api/v1")
-	apiv1.GET("/", func(c *gin.Context) {
-		c.String(http.StatusOK, "Hello World")
-	})
-	//var conf config.Config
-	//config.Viper.AllKeys()
-	//fmt.Println(config.Viper.AllKeys())
+	//r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
+	apiv1.Use(middleware.Test(),middleware.Test2())
+	apiv1.GET("/", api.Hello)
 }
