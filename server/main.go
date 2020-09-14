@@ -7,9 +7,13 @@ import (
 	"basic-server/routers"
 	"fmt"
 	"github.com/gin-gonic/gin"
+	_ "basic-server/docs"
+	"github.com/swaggo/gin-swagger"
+	"github.com/swaggo/gin-swagger/swaggerFiles"
 )
 
 func main() {
+	//gin.SetMode(gin.ReleaseMode)
 	router := gin.Default()
 
 	// 初始化配置
@@ -22,6 +26,7 @@ func main() {
 	// 日志初始化
 	log.New()
 
+	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 	// 路由初始化
 	routers.InitRouter(router)
 

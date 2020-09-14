@@ -1,0 +1,14 @@
+package meta
+
+import (
+    "time"
+)
+
+var (
+    _ = time.Second
+)
+
+type {{.StructName}} struct {
+    {{range .TableInfo.Fields}}{{.}}
+    {{end}}
+}

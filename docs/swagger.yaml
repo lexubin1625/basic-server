@@ -1,0 +1,24 @@
+info:
+  contact: {}
+  license: {}
+paths:
+  /api/v1/logs:
+    get:
+      consumes:
+      - application/json
+      description: GetAllLogs is a handler to get a slice of record(s) from logs table in the task database
+      parameters:
+      - description: page requested (defaults to 0)
+        in: query
+        name: id
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200": {}
+        "400": {}
+        "404": {}
+      summary: Get list of Logs
+      tags:
+      - Logs
+swagger: "2.0"

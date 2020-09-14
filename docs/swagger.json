@@ -1,0 +1,37 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "contact": {},
+        "license": {}
+    },
+    "paths": {
+        "/api/v1/logs": {
+            "get": {
+                "description": "GetAllLogs is a handler to get a slice of record(s) from logs table in the task database",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Logs"
+                ],
+                "summary": "Get list of Logs",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "page requested (defaults to 0)",
+                        "name": "id",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {},
+                    "400": {},
+                    "404": {}
+                }
+            }
+        }
+    }
+}
