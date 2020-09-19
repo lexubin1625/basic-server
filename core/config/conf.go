@@ -2,25 +2,37 @@ package config
 
 import (
 	"flag"
+	"fmt"
 	"github.com/spf13/viper"
 	"gopkg.in/yaml.v2"
 	"io/ioutil"
 )
 
+type Env uint8
+
+const (
+	Local int8 = iota
+	Test
+	Gray
+	Pro
+)
+
 type Server struct {
-	HttpPort int `yaml:"http_port"`
+	HttpPort      int  `yaml:"http_port"`
+	SwaggerEnable bool `yaml:"swagger_enable"`
 }
 type Other struct {
 	DataBase string `yaml:"database"`
 }
 type Config struct {
+	Env    int8   `yaml:"env"`
 	Server Server `yaml:"server"`
 	Other  map[string]string
 }
 
 var (
 	Conf     *Config
-	confFile = flag.String("conf", "./conf/app.yaml", "conf file name")
+	confFile = flag.String("conf", "./conf/config_local.yaml", "conf file name")
 	Viper    *viper.Viper
 )
 
@@ -32,7 +44,7 @@ func (conf *Config) InitConf() (*Config, error) {
 		return nil, err
 	}
 	Viper = viper.New()
-	err = yaml.Unmarshal([]byte(data), conf)
+	err = yaml.Unmarshal(data, conf)
 	if err != nil {
 		return nil, err
 	}
@@ -48,7 +60,7 @@ func readYaml(filename string) (m interface{}) {
 	m = make(map[interface{}]interface{})
 	err := yaml.Unmarshal([]byte(data), &m)
 	if err != nil {
-		return nil
+		panic(fmt.Sprintf("file %s ,err :%v", filename, err))
 	}
 	return m
 }
