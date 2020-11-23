@@ -1,12 +1,13 @@
 package db
 
 import (
-	"basic-server/core/config"
+	"net/url"
+	"time"
+	"x-server/core/config"
+
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/jinzhu/gorm"
 	"github.com/mitchellh/mapstructure"
-	"net/url"
-	"time"
 )
 
 var (

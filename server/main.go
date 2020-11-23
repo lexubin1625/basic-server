@@ -1,18 +1,19 @@
 package main
 
 import (
-	"basic-server/core/config"
-	"basic-server/core/db"
-	"basic-server/core/log"
-	"basic-server/routers"
 	"fmt"
-	"github.com/gin-gonic/gin"
-	_ "basic-server/docs"
-	"github.com/swaggo/gin-swagger"
-	"github.com/swaggo/gin-swagger/swaggerFiles"
 	"os"
 	"os/signal"
 	"syscall"
+	"x-server/core/config"
+	"x-server/core/db"
+	"x-server/core/log"
+	_ "x-server/docs"
+	"x-server/routers"
+
+	"github.com/gin-gonic/gin"
+	ginSwagger "github.com/swaggo/gin-swagger"
+	"github.com/swaggo/gin-swagger/swaggerFiles"
 )
 
 var (

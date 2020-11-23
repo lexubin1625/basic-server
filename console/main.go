@@ -1,10 +1,10 @@
 package main
 
 import (
-	"basic-server/core/config"
-	"basic-server/core/db"
-	"basic-server/core/generator"
 	"fmt"
+	"x-server/core/config"
+	"x-server/core/db"
+	"x-server/core/generator"
 )
 
 func main() {
@@ -15,10 +15,10 @@ func main() {
 	// 数据库初始化
 	db.New()
 
-	dbs,_ := db.Get("default",true)
+	dbs, _ := db.Get("default", true)
 	// 获取表结构信息
 	tableName := "logs"
-	dbMeta ,_ := generator.LoadMysqlMeta(dbs.DB(),tableName)
+	dbMeta, _ := generator.LoadMysqlMeta(dbs.DB(), tableName)
 	var cc generator.Config
 	//fmt.Println(dbMeta)
 	ModelTmpl, err := generator.LoadTemplate("model.go.tmpl")
@@ -26,12 +26,12 @@ func main() {
 
 	}
 	generator.ProcessMappings("./core/generator/template/maping.json")
-	model,_ := generator.GenerateModelInfo(dbMeta,tableName,nil)
+	model, _ := generator.GenerateModelInfo(dbMeta, tableName, nil)
 	fmt.Println(model)
 	var modelInfo = map[string]interface{}{
-		"TableInfo":model,
-		"StructName":"Logs",
+		"TableInfo":  model,
+		"StructName": "Logs",
 	}
-	fmt.Println(cc.WriteTemplate(ModelTmpl,modelInfo,"./model/meta/logs.go"))
+	fmt.Println(cc.WriteTemplate(ModelTmpl, modelInfo, "./model/meta/logs.go"))
 	fmt.Println(dbMeta)
 }

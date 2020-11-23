@@ -1,17 +1,18 @@
 package log
 
 import (
-	"basic-server/core/config"
 	"context"
 	"fmt"
-	"go.uber.org/zap"
-	"go.uber.org/zap/zapcore"
-	"gopkg.in/natefinch/lumberjack.v2"
 	"log"
 	"os"
 	"strconv"
 	"strings"
 	"time"
+	"x-server/core/config"
+
+	"go.uber.org/zap"
+	"go.uber.org/zap/zapcore"
+	"gopkg.in/natefinch/lumberjack.v2"
 )
 
 const UniqueId = "log_id"
@@ -43,7 +44,7 @@ type LogLocalConfig struct {
 
 func New() error {
 	var logConfig = &Log{}
-	config.Viper.UnmarshalKey("log.log",logConfig)
+	config.Viper.UnmarshalKey("log.log", logConfig)
 
 	var cores []zapcore.Core
 	encoderCfg := zapcore.EncoderConfig{
@@ -97,7 +98,6 @@ func New() error {
 	return nil
 }
 
-
 func rorate(l *lumberjack.Logger) {
 	now := time.Now()
 	_, offset := now.Zone()
@@ -117,7 +117,6 @@ func rorate(l *lumberjack.Logger) {
 		}
 	}
 }
-
 
 func Debugf(ctx context.Context, msg string, output ...interface{}) {
 	msg, stack := logMsg(ctx, zap.DebugLevel, msg, output...)

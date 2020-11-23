@@ -1,7 +1,7 @@
 package model
 
 import (
-	"basic-server/model/meta"
+	"x-server/model/meta"
 )
 
 type Logs meta.Logs
